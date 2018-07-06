@@ -4,6 +4,7 @@ import six.moves.urllib as urllib
 import sys
 import tarfile
 import tensorflow as tf
+import time
 import zipfile
 from collections import defaultdict
 from io import StringIO
@@ -12,6 +13,19 @@ from PIL import Image
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 from object_detection.utils import ops as utils_ops
+
+def timeit(method):
+
+    def timed(*args, **kw):
+        ts = time.time()
+        result = method(*args, **kw)
+        te = time.time()
+
+        print('{} ({}, {}) {} sec'.format(method.__name__, args, kw, te-ts))
+        return result
+
+    return timed
+
 
 class ObjectDetectionModel:
     __IMAGE_SIZE = (12, 8)
@@ -24,7 +38,7 @@ class ObjectDetectionModel:
         self.path_to_checkpoint = name + '/frozen_inference_graph.pb'
         self.path_to_labels = os.path.join(name, 'pet_label_map.pbtxt')
         
-
+    @timeit
     def load(self):
         self.detection_graph = tf.Graph()
         with self.detection_graph.as_default():
@@ -41,6 +55,7 @@ class ObjectDetectionModel:
         # Reference the name
         print(" Loading model: " +self.name)
     
+    @timeit
     def evaluate_model_on_single_image(self, image_path, output_path):
         image = Image.open(image_path)
         # the array based representation of the image will be used later in order to prepare the
