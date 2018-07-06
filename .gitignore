@@ -3,3 +3,4 @@
 __pycache__/
 *.jpg
 auth.py
+*.record

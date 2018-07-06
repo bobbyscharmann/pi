@@ -1,0 +1,26 @@
+<annotation>
+  <folder>images</folder>
+  <filename>file (24)</filename>
+  <path>C:\Users\scharmann\Desktop\pi\ml-tweet-bot\images\file (24).jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>500</width>
+    <height>500</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>basket</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>140</xmin>
+      <ymin>16</ymin>
+      <xmax>354</xmax>
+      <ymax>309</ymax>
+    </bndbox>
+  </object>
+</annotation>
